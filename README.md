@@ -13,5 +13,6 @@ Jupyter Notebooks for the following Topics:
 - [Functions](08-Functions.ipynb)
 - [Troubleshooting](09-Troubleshooting.ipynb)
 - [Git and Terminal Commands](10-Git_And_Terminal_Commands.ipynb)
-- [Custom Objects](11-Custom_Objects.py)
-- [Unit Testing](12-Unit_Testing.py)
+- [Custom Objects](Advanced/custom_object.py)
+- [Unit Testing](Advanced/tests/test_custom_object.py)
+- [Inheritance](Advanced/inheritance.py)

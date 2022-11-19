@@ -6,13 +6,16 @@ import pytest
 from unittest.mock import patch
 from datetime import datetime
 
-# We have to import the library in this manner since the file starts with a number
-# The standard method would be the following: from 11-Custom_Objects import Employee, get_datetune, main
-employee_lib = __import__('11-Custom_Objects')
+# These red lines are expected and pytest will work
+sys.path.append(sys.path[0] + '/..')
+from custom_object import Employee, get_datetime, main
 
 
-# To run the tests, execute the following code in the terminal : pytest 12-Unit_Testing.py
-# To run the tests and show more output, execute the following code in the terminal : pytest -vvv 12-Unit_Testing.py
+# To run the tests, execute the following code in the terminal :
+#   pytest Advanced/tests/test_custom_object.py
+
+# To run the tests and show more output, execute the following code in the terminal : 
+#   pytest -vvv Advanced/tests/test_custom_object.py
 
 class TestEmployee(unittest.TestCase):
     """ Test the functions within the Employee class """
@@ -20,13 +23,13 @@ class TestEmployee(unittest.TestCase):
     def setUp(self):
         """ Run this code before every test """
         # Mock the function that gets datetime.now, therefore, we know what date to expect everytime it is called
-        self.mock_datetime = patch("11-Custom_Objects.get_datetime", return_value=datetime(2011, 11, 11, 11, 11, 11))
+        self.mock_datetime = patch("custom_object.get_datetime", return_value=datetime(2011, 11, 11, 11, 11, 11))
         
         # Start the mocks
         self.mock_datetime.start()
 
         # Define any re-useable variables
-        self.employee = employee_lib.Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
+        self.employee = Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
 
         # Capture all printed statements here instead of the terminal
         self.capturedOutput = io.StringIO()
@@ -64,7 +67,7 @@ class TestEmployee(unittest.TestCase):
     def test_employee_eq(self):
         """ Test if the employee __eq__ function works properly """
         # Create a new employee variable with the same paramertes to compare against the first one
-        employee_new = employee_lib.Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
+        employee_new = Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
 
         # Using == will call the function __eq__
         assert self.employee == employee_new
@@ -127,15 +130,15 @@ class TestMain(unittest.TestCase):
         TypeError: can't set attributes of built-in/extension type 'datetime.datetime'.
         """
         # Call the tested function
-        current_datetime = employee_lib.get_datetime()
+        current_datetime = get_datetime()
 
         # Verify that a datetime was returned, unable to check value because it changes
         assert isinstance(current_datetime, datetime)
 
     # Instead of actually calling the functions, change it so nothing happens instead
-    @patch.object(employee_lib.Employee, "display_company_message")
-    @patch.object(employee_lib.Employee, "greet_employee")
-    @patch.object(employee_lib.Employee, "retrieve_email")
+    @patch.object(Employee, "display_company_message")
+    @patch.object(Employee, "greet_employee")
+    @patch.object(Employee, "retrieve_email")
     def test_main_success(self, valid_message, valid_greeting, valid_email):
         """
         Test the main function with valid args
@@ -144,7 +147,7 @@ class TestMain(unittest.TestCase):
         sys.argv = ["11-Custom_Objects.py", "Lizzie", "Altena", 25, 100000]
 
         # Call the tested function
-        employee_lib.main()
+        main()
 
         # Verify that the functions were called
         valid_message.assert_called() 
@@ -158,5 +161,5 @@ class TestMain(unittest.TestCase):
         # Verify that providing no args raises an error
         with pytest.raises(Exception):   
             # Call the tested function
-            employee_lib.main()
+            main()
         
