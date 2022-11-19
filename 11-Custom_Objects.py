@@ -46,7 +46,7 @@ class Employee:
         self.created_datetime = get_datetime()
 
     def __str__(self) -> str:
-        """ Override the string function to format it appropiately """
+        """ Override the string function to format it appropriately """
         return (
                 "\n------------ Employee Information ------------\n" +
                 f"Name: {self.full_name}\n" +
