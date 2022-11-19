@@ -1,4 +1,4 @@
-# Alison-Python-Course
+# Python-Programming-Study
 
 Programs and Lessons I learned while taking the [Alison Python Course](https://alison.com/course/diploma-in-python-programming-revised) and self-study!
 
@@ -13,4 +13,5 @@ Jupyter Notebooks for the following Topics:
 - [Functions](08-Functions.ipynb)
 - [Troubleshooting](09-Troubleshooting.ipynb)
 - [Git and Terminal Commands](10-Git_And_Terminal_Commands.ipynb)
-- [Custom Objects](11-Custom_Objects.ipynb)
+- [Custom Objects](11-Custom_Objects.py)
+- [Unit Testing](12-Unit_Testing.py)

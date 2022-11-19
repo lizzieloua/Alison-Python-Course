@@ -1,3 +1,7 @@
 
-# Ignore common files
+# Ignore common VS Code files
 .DS_Store
+.ipynb_checkpoints
+.pytest_cache
+.vscode
+__pycache__/
