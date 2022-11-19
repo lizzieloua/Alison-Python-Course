@@ -51,13 +51,24 @@ class TestEmployee(unittest.TestCase):
         assert self.employee.created_datetime == datetime(2011, 11, 11, 11, 11, 11)
         assert self.employee.updated_datetime == None
     
-    def test_employee_repr_and_eq(self):
-        """ Test if the employee __repr__ and __eq__ functions work properly """
+    def test_employee_str_repr(self):
+        """ Test if the employee __str__ and __repr__ functions work properly """
+        # Using the repr function on the employee will also call str
+        assert repr(self.employee) == (
+            "\n------------ Employee Information ------------\n" +
+            f"Name: {self.employee.full_name}\n" +
+            f"Age: {self.employee.age}\n" +
+            f"Salary: {self.employee.salary}\n" +
+            f"Created Date: {self.employee.created_datetime.strftime('%B %d, %Y at %H:%M:%S')}\n"
+        )
+
+    def test_employee_eq(self):
+        """ Test if the employee __eq__ function works properly """
         # Create a new employee variable with the same paramertes to compare against the first one
         employeeNew = employee_lib.Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
 
-        # Using repr and == will call the function __repr__ and __eq__
-        assert repr(self.employee) == repr(employeeNew)
+        # Using == will call the function __eq__
+        assert self.employee == employeeNew
     
     def test_display_company_message(self):
         """ Test that the correct message is printed out """

@@ -1,0 +1,2 @@
+# Required Libarie(s) to support our Python files
+pytest==7.2.0
