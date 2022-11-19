@@ -1,4 +1,4 @@
-# Python-Programming-Study
+# Python Programming Study Guide
 
 Programs and Lessons I learned while taking the [Alison Python Course](https://alison.com/course/diploma-in-python-programming-revised) and self-study!
 
