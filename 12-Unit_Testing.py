@@ -32,7 +32,6 @@ class TestEmployee(unittest.TestCase):
         self.capturedOutput = io.StringIO()
         sys.stdout = self.capturedOutput
 
-
     def tearDown(self):
         """ Run this code after every test """
         # Stop mocking datetime
@@ -49,8 +48,8 @@ class TestEmployee(unittest.TestCase):
         assert self.employee.salary == 1000
         assert self.employee.email == ""
         assert self.employee.created_datetime == datetime(2011, 11, 11, 11, 11, 11)
-        assert self.employee.updated_datetime == None
-    
+        assert self.employee.updated_datetime is None
+
     def test_employee_str_repr(self):
         """ Test if the employee __str__ and __repr__ functions work properly """
         # Using the repr function on the employee will also call str
@@ -65,10 +64,10 @@ class TestEmployee(unittest.TestCase):
     def test_employee_eq(self):
         """ Test if the employee __eq__ function works properly """
         # Create a new employee variable with the same paramertes to compare against the first one
-        employeeNew = employee_lib.Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
+        employee_new = employee_lib.Employee(first_name="Lizzie", last_name="Altena", age=25, salary=1000)
 
         # Using == will call the function __eq__
-        assert self.employee == employeeNew
+        assert self.employee == employee_new
     
     def test_display_company_message(self):
         """ Test that the correct message is printed out """
@@ -119,7 +118,6 @@ class TestEmployee(unittest.TestCase):
         assert self.employee.updated_datetime == datetime(2011, 11, 11, 11, 11, 11)
 
 
-
 # Test the main functions
 class TestMain(unittest.TestCase):
     def test_get_datetime(self):
@@ -129,10 +127,10 @@ class TestMain(unittest.TestCase):
         TypeError: can't set attributes of built-in/extension type 'datetime.datetime'.
         """
         # Call the tested function
-        currentDateTime = employee_lib.get_datetime()
+        current_datetime = employee_lib.get_datetime()
 
         # Verify that a datetime was returned, unable to check value because it changes
-        assert isinstance(currentDateTime, datetime)
+        assert isinstance(current_datetime, datetime)
 
     # Instead of actually calling the functions, change it so nothing happens instead
     @patch.object(employee_lib.Employee, "display_company_message")

@@ -3,8 +3,8 @@ import sys
 
 from datetime import datetime
 
-class Employee:
 
+class Employee:
     # An employee's full name
     full_name = ""
 
@@ -23,16 +23,15 @@ class Employee:
     # The date time the employee was updated
     updated_datetime = None
 
-
     def __init__(
-        self, 
+        self,
         *,
         first_name: str,
         last_name: str,
         age: int,
-        salary: int, 
+        salary: int,
         email: str = ""
-        ):
+    ):
 
         # Display a message to track code progress
         print("Creating a new employee!")
@@ -49,13 +48,14 @@ class Employee:
     def __str__(self) -> str:
         """ Override the string function to format it appropiately """
         return (
-            "\n------------ Employee Information ------------\n" +
-            f"Name: {self.full_name}\n" +
-            f"Age: {self.age}\n" +
-            f"Salary: {self.salary}\n" +
-            (f"Email: {self.email}\n" if self.email else "") +
-            f"Created Date: {self.created_datetime.strftime('%B %d, %Y at %H:%M:%S')}\n" +
-            (f"Updated Date: {self.updated_datetime.strftime('%B %d, %Y at %H:%M:%S')}\n" if self.updated_datetime else "")
+                "\n------------ Employee Information ------------\n" +
+                f"Name: {self.full_name}\n" +
+                f"Age: {self.age}\n" +
+                f"Salary: {self.salary}\n" +
+                (f"Email: {self.email}\n" if self.email else "") +
+                f"Created Date: {self.created_datetime.strftime('%B %d, %Y at %H:%M:%S')}\n" +
+                (f"Updated Date: {self.updated_datetime.strftime('%B %d, %Y at %H:%M:%S')}\n"
+                 if self.updated_datetime else "")
         )
 
     def __repr__(self) -> str:
@@ -68,7 +68,8 @@ class Employee:
 
     @staticmethod
     def display_company_message() -> None:
-        """ This function is generic for every employee. Therefore, it can be static because it does not require employee information. """
+        """ This function is generic for every employee.
+        Therefore, it can be static because it does not require employee information. """
         print("Welcome to our company, just where you belong!\n")
 
     def greet_employee(self) -> None:
@@ -81,18 +82,18 @@ class Employee:
         # Ask the employee for their email until valid input is received
         while True:
             # Gather their input
-            emailResponse = input("What is your email? ")
+            email_response = input("What is your email? ")
 
             # Check if the input is valid
-            if "@" in emailResponse and "." in emailResponse:
+            if "@" in email_response and "." in email_response:
                 # Since the email provided was valid, break out of the while loop
                 break
             else:
                 # Since the email provided was invalid, ask the employee again
-                print(f"The email given, {emailResponse}, is not valid. Please provide a valid email.\n")
-        
+                print(f"The email given, {email_response}, is not valid. Please provide a valid email.\n")
+
         # The email must be valid to get here
-        self.email = emailResponse
+        self.email = email_response
 
         # Update the updated_datetime variable
         self.updated_datetime = get_datetime()
@@ -104,10 +105,13 @@ def main():
 
     # We expect 4 arguments, raise an exception if not provided
     if len(args) != 4:
-        raise Exception("This program expects 4 arguments.\nPlease try re-running the program and provide first name, last name, age, and salary.")
+        raise Exception(
+            "This program expects 4 arguments.\n"
+            "Please try re-running the program and provide first name, last name, age, and salary."
+        )
 
     # Create a variable using the custom object, Employee
-    employee = Employee(first_name=args[0], last_name=args[1], age=args[2], salary=args[3])
+    employee = Employee(first_name=args[0], last_name=args[1], age=int(args[2]), salary=int(args[3]))
 
     # Display the employee's initial information
     print(employee)
@@ -134,4 +138,3 @@ def get_datetime() -> datetime:
 
 if __name__ == "__main__":
     main()
-
