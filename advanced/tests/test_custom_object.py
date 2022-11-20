@@ -12,10 +12,10 @@ from custom_object import Employee, get_datetime, main
 
 
 # To run the tests, execute the following code in the terminal :
-#   pytest Advanced/tests/test_custom_object.py
+#   pytest advanced/tests/test_custom_object.py
 
 # To run the tests and show more output, execute the following code in the terminal : 
-#   pytest -vvv Advanced/tests/test_custom_object.py
+#   pytest -vvv advanced/tests/test_custom_object.py
 
 class TestEmployee(unittest.TestCase):
     """ Test the functions within the Employee class """

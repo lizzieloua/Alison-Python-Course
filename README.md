@@ -2,7 +2,7 @@
 
 Programs and Lessons I learned while taking the [Alison Python Course](https://alison.com/course/diploma-in-python-programming-revised) and self-study!
 
-Jupyter Notebooks for the following Topics:
+Jupyter Notebooks and Python Files for the following Topics:
 - [Terminology](01-Terminology.ipynb)
 - [Introduction](02-Introduction.ipynb)
 - [If Statements](03-If_Statements.ipynb)
@@ -13,6 +13,6 @@ Jupyter Notebooks for the following Topics:
 - [Functions](08-Functions.ipynb)
 - [Troubleshooting](09-Troubleshooting.ipynb)
 - [Git and Terminal Commands](10-Git_And_Terminal_Commands.ipynb)
-- [Custom Objects](Advanced/custom_object.py)
-- [Unit Testing](Advanced/tests/test_custom_object.py)
-- [Inheritance](Advanced/inheritance.py)
+- [Custom Objects](advanced/custom_object.py)
+- [Unit Testing](advanced/tests/test_custom_object.py)
+- [Inheritance](advanced/inheritance.py)
