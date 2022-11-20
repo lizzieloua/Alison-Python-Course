@@ -7,3 +7,6 @@
 __pycache__/
 .coverage
 .idea/
+
+# Files that should not be shared with the public
+projects/config/secrets.py
