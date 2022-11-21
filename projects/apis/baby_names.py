@@ -2,14 +2,12 @@
 import sys
 import requests
 
-# These red lines are expected and pytest will work
-sys.path.append(sys.path[0] + '/..')
 from config.secrets import API_NINJAS_KEY
 
 
 def get_baby_names(*, gender: str = "neutral", popular_only: str = "true") -> str:
     """
-    Send a GET request to the api-ninjas API using the selected gender and popular status
+    Send a GET request to the api-ninjas API using the selected gender and popular status to get a list of baby names
 
     :param gender: (str) a specified gender (must be boy, girl, or neutral)
     :param popular_only: (str) whether to only return popular (top 10%) of names (must betrue or false)
@@ -41,11 +39,8 @@ def format_api_response(text: str) -> str:
 
     :return: the list of strings separated by a new line
     """
-    # Remove the supporting list characters
-    remove_extras = text.replace("[", "").replace("]", "").replace('"', '').replace(" ", "")
-
-    # Create a list with the new string
-    name_list = remove_extras.split(",")
+    # Remove the extra list characters
+    name_list = eval(text)
 
     # Change the list back into a string separated by new lines
     return "\n".join(name_list)
@@ -59,10 +54,13 @@ def check_gender(gender: str = None) -> bool:
 
     :return: True if the gender was not provided or an acceptable gender, otherwise, False
     """
+    # If a gender was not provided, return True
     if not gender:
         return True
+    # If the gender was one of the valid options, return True
     elif gender in ("boy", "girl", "neutral"):
         return True
+    # Return False for anything else
     else:
         return False
 
