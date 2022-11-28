@@ -10,3 +10,4 @@ __pycache__/
 
 # Files that should not be shared with the public
 secrets.py
+*.jpg
